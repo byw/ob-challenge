@@ -3,10 +3,14 @@ require_relative 'utils'
 module Challenge2
 
   def self.main
-    csv_data = File.read(ARGV.first)
-    c_bonds, g_bonds = Utils.parse_csv(csv_data)
-    Challenge2.spreads_to_curve(c_bonds, g_bonds).each do |c_bond| 
-      printf "%s,%.2f%\n", c_bond[:bond], c_bond[:spread_to_curve]
+    if file_path = ARGV.first
+      csv_data = File.read(file_path)
+      c_bonds, g_bonds = Utils.parse_csv(csv_data)
+      Challenge2.spreads_to_curve(c_bonds, g_bonds).each do |c_bond| 
+        printf "%s,%.2f%\n", c_bond[:bond], c_bond[:spread_to_curve]
+      end
+    else
+      STDERR.puts "Please specify a file!"
     end
   end
 
