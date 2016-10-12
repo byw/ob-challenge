@@ -1,3 +1,4 @@
+require_relative 'test_helper'
 require_relative 'utils'
 require_relative 'challenge_2'
 
@@ -38,13 +39,16 @@ RSpec.describe Challenge2 do
       expect(results[1][:spread_to_curve].round(2)).to eq(2.98)
     end
   end
-end
 
-def make_bond(name, term, bond_yield)
-  {
-    bond: name,
-    term: BigDecimal(term.to_s),
-    yield: BigDecimal(bond_yield.to_s)
-  }
+  describe '#main' do
+    context 'malformed CSV' do
+      it 'prints error to stderr' do
+        ARGV = ['malformed_csv.csv']
+        expect do
+          Challenge2.main 
+        end.to output("Malformed CSV file!\n").to_stderr
+      end
+    end
+  end
 end
 
