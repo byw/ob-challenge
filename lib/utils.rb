@@ -1,12 +1,8 @@
 require 'csv'
 require 'bigdecimal'
 
-
 module Utils
-
-
   def self.parse_csv(csv_data)
-
     c_bonds, g_bonds = [], []
 
     CSV.parse(csv_data, headers: true) do |row| 
@@ -21,9 +17,7 @@ module Utils
     end
 
     return c_bonds, g_bonds
-
   end
-
 
   def self.parse_row(row)
     {
@@ -32,6 +26,4 @@ module Utils
       yield: BigDecimal(row['yield'][0..-2])
     }
   end
-
-
 end
