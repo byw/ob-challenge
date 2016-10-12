@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+if !%w(1 2).include?(ARGV[0])
+  puts 'Please specify challenge 1 or 2.'
+  puts '(eg. ./run_challenge 1 sample_input.csv)'
+elsif !ARGV[1]
+  puts 'Please specify a CSV file.'
+  puts '(eg. ./run_challenge 1 sample_input.csv)'
+else
+  require_relative "lib/challenge_#{ARGV.shift}"
+end

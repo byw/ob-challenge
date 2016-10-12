@@ -1,6 +1,5 @@
-require_relative 'test_helper'
-require_relative 'utils'
-require_relative 'challenge_2'
+require 'spec_helper'
+require 'challenge_2'
 
 RSpec.describe Challenge2 do
 
@@ -43,7 +42,7 @@ RSpec.describe Challenge2 do
   describe '#main' do
     context 'malformed CSV' do
       it 'prints error to stderr' do
-        ARGV = ['malformed_csv.csv']
+        ARGV = ['./spec/fixtures/malformed_csv.csv']
         expect do
           Challenge2.main 
         end.to output("Malformed CSV file!\n").to_stderr
