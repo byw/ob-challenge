@@ -45,6 +45,6 @@ module Challenge1
 end
 
 if file_path = ARGV.first
-  csv_file = File.open(file_path)
-  Challenge1.calculate_spreads(csv_file.read)
+  csv_data = File.read(file_path)
+  Challenge1.calculate_spreads(csv_data)
 end

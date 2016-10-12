@@ -6,7 +6,7 @@ RSpec.describe Challenge1 do
   describe '#calculate_spreads' do
     context 'properly-formed CSV' do
       let :csv_data do
-        File.open('sample_input.csv').read
+        File.read('sample_input.csv')
       end
 
       it 'prints the header row' do
